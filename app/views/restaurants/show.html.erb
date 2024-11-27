@@ -1,0 +1,35 @@
+<div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 p-4">
+  <div class="col">
+
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">
+          <%= @restaurant.name %></h1>
+        <p><%= @restaurant.address %></p>
+        <p><%= @restaurant.phone_number %></p>
+        <p><%= @restaurant.category %></p>
+
+        <%= link_to "Back to Restaurants", restaurants_path, class: "btn btn-primary" %>
+        <%= link_to "Add a Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+      </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="reviews mt-5">
+      <h2>Reviews:</h2>
+      <% @restaurant.reviews.each do |review| %>
+        <div class="card my-3">
+          <div class="card-body">
+            <p><strong>Rating:</strong> <%= review.rating %> / 5</p>
+            <p><strong>Review:</strong> <%= review.content %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @restaurant.reviews.empty? %>
+        <p class="text-muted">No reviews yet. Be the first to leave a review!</p>
+      <% end %>
+    </div>
+
+  </div>
+</div>

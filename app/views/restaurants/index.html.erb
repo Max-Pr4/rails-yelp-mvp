@@ -1,0 +1,31 @@
+<div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 p-4">
+  <% @restaurants.each do |restaurant| %>
+    <div class="col mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title text-center"><%= restaurant.name %></h3>
+          <p class="card-text">
+            <strong>Rating:</strong> <%= restaurant.rating.present? ? restaurant.rating : "Not available" %><br>
+            <strong>Category:</strong> <%= restaurant.category %><br>
+            <strong>Phone Number:</strong> <%= restaurant.phone_number %><br>
+            <strong>Address:</strong> <%= restaurant.address %>
+          </p>
+          <%= link_to "View Details", restaurant_path(restaurant), class: "btn btn-primary w-100" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Carte "Add new restaurant" -->
+  <div class="col mb-4">
+    <div class="card shadow-sm add-restaurant-card">
+      <div class="card-body text-center">
+        <div class="add-restaurant-icon">
+        </div>
+        <%= link_to new_restaurant_path, class: "btn btn-success w-100%" do %>
+          + Add new restaurant
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
